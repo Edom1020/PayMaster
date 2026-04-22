@@ -1,13 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package paymasterpoo;
 
 /**
  *
  * @author Esteb
  */
-public class EmpleadoAsalariado {
-    
+public class EmpleadoAsalariado extends Empleado {
+    private double salarioMensual;
+    private int años;
+
+    public EmpleadoAsalariado(String nombre, double salarioMensual, int años) {
+        super(nombre);
+        this.salarioMensual = salarioMensual;
+        this.años = años;
+    }
+
+    @Override
+    public double calcularSalarioBruto() {
+        double salario = salarioMensual;
+
+        // Bono 10% si > 5 años
+        if (años > 5) {
+            salario += salarioMensual * 0.10;
+        }
+
+        // Bono alimentación
+        salario += 1000000;
+
+        return salario;
+    }
 }
